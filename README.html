@@ -1,0 +1,218 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+p{
+margin:1em 0;
+}
+
+img{
+max-width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+
+b, strong { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><title>README</title></head><body><p><a href="http://travis-ci.org/lassebunk/item"><img alt="Build Status" src="https://secure.travis-ci.org/lassebunk/item.png" /></a></p>
+<h1 id="item">Item</h1>
+<p>Item is a Ruby on Rails plugin for implementing semantic markup (microdata) without messing up the view code.</p>
+<p>See <a href="http://schema.org/docs/schemas.html">Schema.org</a> for valid microdata.</p>
+<h2 id="installation">Installation</h2>
+<p>Add this line to your application's <em>Gemfile</em>:</p>
+<pre><code class="ruby">gem 'item'
+</code></pre>
+
+<p>Then run:</p>
+<pre><code class="bash">$ bundle
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+<h3 id="scopes">Scopes</h3>
+<p>To define an <code>itemscope</code>:</p>
+<pre><code class="erb">&lt;% scope :product do %&gt;
+  ...
+&lt;% end %&gt;
+</code></pre>
+
+<p>This will generate the following HTML:</p>
+<pre><code class="html">&lt;div itemscope itemtype=&quot;http://schema.org/Product&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="properties">Properties</h3>
+<p>To define an <code>itemprop</code> span:</p>
+<pre><code class="erb">&lt;%= prop :name, &quot;My Product Name&quot; %&gt;
+</code></pre>
+
+<p>This will generate the following HTML:</p>
+<pre><code class="html">&lt;span itemprop=&quot;name&quot;&gt;My Product Name&lt;/span&gt;
+</code></pre>
+
+<h4 id="hidden-meta-properties">Hidden meta properties</h4>
+<p>To define hidden <code>itemprop</code>s via <code>&lt;meta&gt;</code> tags, pass a hash to the <code>prop</code> helper:</p>
+<pre><code class="erb">&lt;%= prop date_published: Date.today %&gt;
+</code></pre>
+
+<p>This will generate the following HTML:</p>
+<pre><code class="html">&lt;meta itemprop=&quot;datePublished&quot; content=&quot;2014-07-26&quot; /&gt;
+</code></pre>
+
+<h4 id="link-values">Link values</h4>
+<p>To define a link to an enumeration member, e.g. <a href="">ItemAvailability</a></p>
+<h2 id="example">Example</h2>
+<p>The following is the Product <a href="http://schema.org/Product">example</a> on <a href="http://schema.org">Schema.org</a> rewritten with Item. In your view:</p>
+<pre><code class="erb">&lt;% scope :product do %&gt;
+  &lt;%= itemprop :name, &quot;Kenmore White 17\&quot; Microwave&quot; %&gt;
+  &lt;%= image_tag &quot;kenmore-microwave-17in.jpg&quot; %&gt;
+
+  &lt;% prop :aggregate_rating do %&gt;
+    Rated &lt;%= prop :rating_value, 3.5 %&gt;/5
+    based on &lt;%= prop :review_count, 11 %&gt; custom reviews
+  &lt;% end %&gt;
+
+  &lt;% prop :offers, type: :offer do %&gt;
+    &lt;%= prop :price, &quot;$55.00&quot; %&gt;
+    &lt;%= prop :availability, :in_stock %&gt;
+    In Stock
+  &lt;% end %&gt;
+
+  Product description:
+  &lt;%= prop :description, &quot;0.7 cubic feet countertop microwave.
+    Has six preset cooking categories and convenience features like
+    Add-A-Minute and Child Lock.&quot; %&gt;
+
+  Customer reviews:
+  &lt;% prop :review do %&gt;
+    &lt;%= prop :name, &quot;Not a happy camper&quot; %&gt; -
+    by &lt;%= prop :author, &quot;Ellie&quot; %&gt;,
+    &lt;%= prop date_published: &quot;2011-04-01&quot; %&gt;
+    April 1, 2011
+    &lt;% prop :review_rating, type: :rating do %&gt;
+      &lt;%= prop worst_rating: 1 %&gt;
+      &lt;%= prop :rating_value, 1 %&gt; /
+      &lt;%= prop :best_rating, 5 %&gt; stars
+      &lt;%= prop :description, &quot;The lamp burned out and now I have to replace it.&quot; %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<h2 id="contributing">Contributing</h2>
+<p>Changes and improvements are to Item are very welcome and greatly appreciated.</p>
+<ol>
+<li>Fork the project</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Add your changes, including tests so we don't break it unintentionally.</li>
+<li>Run <code>rake</code> to make sure the tests pass</li>
+<li>Commit your changes (<code>git commit -am 'Add feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new pull request</li>
+</ol></body></html>
