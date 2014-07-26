@@ -2,7 +2,7 @@
 
 # Item
 
-Item is a Ruby on Rails plugin for adding semantic markup (microdata) to your views without cluttering the code.
+Item is a Ruby on Rails plugin for adding semantic markup (microdata) to your views without cluttering the view code.
 
 **What is Microdata?** [Microdata](http://schema.org) helps search engines show additional information about your content, for example product reviews.
 This can help attract visitors to your site:
