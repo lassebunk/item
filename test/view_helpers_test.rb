@@ -36,9 +36,9 @@ class ViewHelpersTest < ActionView::TestCase
   end
 
   test "hidden prop" do
-    content = prop(aggregate_rating: "Rating content", title: "Title content")
+    content = prop(aggregate_rating: "Rating content", availability: :in_stock)
 
-    assert_equal %{<meta content="Rating content" itemprop="aggregateRating" />\n<meta content="Title content" itemprop="title" />},
+    assert_equal %{<meta content="Rating content" itemprop="aggregateRating" />\n<link href="http://schema.org/InStock" itemprop="availability" />},
                  content
   end
 
