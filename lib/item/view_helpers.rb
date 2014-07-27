@@ -2,7 +2,7 @@ module Item
   module ViewHelpers
     def scope(key, options = {}, &block)
       tag = options.delete(:tag) || :div
-      tag_options = { itemscope: true, itemtype: Util.itemtype(key) }.merge(options)
+      tag_options = { itemscope: "itemscope", itemtype: Util.itemtype(key) }.merge(options)
       content_tag(tag, tag_options, &block)
     end
 
@@ -24,7 +24,7 @@ module Item
         if block
           tag = options.delete(:tag) || :div
           itemtype = Util.itemtype(options.delete(:type) || key)
-          tag_options = { itemprop: itemprop, itemscope: true, itemtype: itemtype }.merge(options)
+          tag_options = { itemprop: itemprop, itemscope: "itemscope", itemtype: itemtype }.merge(options)
           content_tag(tag, tag_options, &block)
         else
           tag = options.delete(:tag) || :span

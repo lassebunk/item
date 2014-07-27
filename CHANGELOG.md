@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.0.5
+
+* Set itemscope attribute explicitly for backwards Rails compatibility
+
 ### 0.0.4
 
 * Support passing options to `scope` and `prop`, like `:tag` and `:class`
