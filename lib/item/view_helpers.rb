@@ -8,9 +8,15 @@ module Item
 
     def prop(key, value = nil, options = {}, &block)
       if key.is_a?(Hash)
-        key.map { |key, value| tag(:meta, itemprop: Util.itemprop(key), content: value) }.join("\n").html_safe
+        key.map do |key, value|
+          if value.is_a?(Symbol)
+            link_prop(key, value)
+          else
+            meta_prop(key, value)
+          end
+        end.join("\n").html_safe
       elsif value.is_a?(Symbol)
-        tag(:link, itemprop: Util.itemprop(key), href: Util.href(value))
+        link_prop(key, value)
       else
         options, value = value, nil if value.is_a?(Hash)
         itemprop = Util.itemprop(key)
@@ -26,6 +32,14 @@ module Item
           content_tag(tag, value, tag_options)
         end
       end
+    end
+
+    def link_prop(key, value)
+      tag(:link, itemprop: Util.itemprop(key), href: Util.href(value))
+    end
+
+    def meta_prop(key, value)
+      tag(:meta, itemprop: Util.itemprop(key), content: value)
     end
 
     module Util
