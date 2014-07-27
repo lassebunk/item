@@ -48,6 +48,14 @@ The above will generate the following HTML:
 </div>
 ```
 
+If you need the scope to be another tag than `<div>` or e.g. need to set a class, you can do it like this:
+
+```erb
+<%= scope :product, tag: :span, class: "a-class" do %>
+  ...
+<% end %>
+```
+
 ### Properties
 
 To define an `itemprop` span:
@@ -60,6 +68,12 @@ This will generate the following HTML:
 
 ```html
 <span itemprop="name">My Product Name</span>
+```
+
+If you need the property to be another tag than span `<span>` or e.g. need to set a class, you can do it like this:
+
+```erb
+<%= prop :name, "My Product Name", tag: :div, class: "a-class" %>
 ```
 
 #### Scoped properties
