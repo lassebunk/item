@@ -12,10 +12,26 @@ class ViewHelpersTest < ActionView::TestCase
                  content
   end
 
+  test "scope options" do
+    content = scope :aggregate_rating, tag: :something, class: "some-class" do
+      "content"
+    end
+
+    assert_equal %{<something class="some-class" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">content</something>},
+                 content
+  end
+
   test "prop" do
     content = prop(:aggregate_rating, "content")
 
     assert_equal %{<span itemprop="aggregateRating">content</span>},
+                 content
+  end
+
+  test "prop options" do
+    content = prop(:aggregate_rating, "content", tag: :something, class: "some-class")
+
+    assert_equal %{<something class="some-class" itemprop="aggregateRating">content</something>},
                  content
   end
 
@@ -39,6 +55,15 @@ class ViewHelpersTest < ActionView::TestCase
     end
 
     assert_equal %{<div itemprop="aggregateRating" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">content</div>},
+                 content
+  end
+
+  test "prop block with options" do
+    content = prop :aggregate_rating, tag: :something, class: "some-class" do
+      "content"
+    end
+
+    assert_equal %{<something class="some-class" itemprop="aggregateRating" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">content</something>},
                  content
   end
 
