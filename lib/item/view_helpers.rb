@@ -1,9 +1,7 @@
 module Item
   module ViewHelpers
     def scope(key, options = {}, &block)
-      content = capture(&block)
-      concat content_tag(:div, content, itemscope: "itemscope", itemtype: Util.itemtype(key))
-      nil
+      content_tag(:div, itemscope: "itemscope", itemtype: Util.itemtype(key), &block)
     end
 
     def prop(key, value = nil, options = {}, &block)
@@ -16,10 +14,8 @@ module Item
         itemprop = Util.itemprop(key)
 
         if block
-          value = capture(&block)
           itemtype = Util.itemtype(options[:type].presence || key)
-          concat content_tag(:div, value, itemprop: itemprop, itemscope: "itemscope", itemtype: itemtype)
-          nil
+          content_tag(:div, itemprop: itemprop, itemscope: "itemscope", itemtype: itemtype, &block)
         else
           content_tag(:span, value, itemprop: itemprop)
         end
