@@ -85,7 +85,7 @@ The above will generate the following HTML:
 Sometimes you need to define a type on scoped properties when this cannot be inferred from the property name. To set a type:
 
 ```erb
-<%= prop :review_rating, type: :review do %>
+<%= prop :review_rating, type: :rating do %>
   ...
 <% end %>
 ```
