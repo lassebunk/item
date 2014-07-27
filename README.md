@@ -11,7 +11,6 @@ This can help attract visitors to your site:
 
 **The problem with Microdata:** Normally, implementing these Microdata can make your views quite messy because you have a lot of "extra" content other than your regular view content.
 
-
 **Item:** Item solves the problem by adding two helpers, `scope` and `prop`, that you can use in your views.
 This makes it easy to add microdata scopes and properties without cluttering the view. Item is made to maximize ease of writing (and joy, of course – it *is* Ruby), while minimizing the code needed to add microdata to your views.
 
@@ -36,12 +35,10 @@ $ bundle
 To define an `itemscope`:
 
 ```erb
-<% scope :product do %>
+<%= scope :product do %>
   ...
 <% end %>
 ```
-
-You don't need `<%=` before scopes, because we see it as just a definition, and not something that is inserted into the view, even though this is done behind the scenes.
 
 The above will generate the following HTML:
 
@@ -70,12 +67,10 @@ This will generate the following HTML:
 To define a property that is also a scope:
 
 ```erb
-<% prop :review do %>
+<%= prop :review do %>
   <%= prop :name, "Pete Anderson" %>
 <% end %>
 ```
-
-You don't need `<%=` before scoped properties, because we see this as a definition of a scope. The HTML is inserted automatically.
 
 The above will generate the following HTML:
 
@@ -90,7 +85,7 @@ The above will generate the following HTML:
 Sometimes you need to define a type on scoped properties when this cannot be inferred from the property name. To set a type:
 
 ```erb
-<% prop :review_rating, type: :review do %>
+<%= prop :review_rating, type: :review do %>
   ...
 <% end %>
 ```
@@ -141,12 +136,12 @@ The following is based on the [Product example](http://schema.org/Product) on [S
   <%= itemprop :name, "Kenmore White 17\" Microwave" %>
   <%= image_tag "kenmore-microwave-17in.jpg" %>
 
-  <% prop :aggregate_rating do %>
+  <%= prop :aggregate_rating do %>
     Rated <%= prop :rating_value, 3.5 %>/5
     based on <%= prop :review_count, 11 %> custom reviews
   <% end %>
 
-  <% prop :offers, type: :offer do %>
+  <%= prop :offers, type: :offer do %>
     <%= prop :price, "$55.00" %>
     <%= prop :availability, :in_stock %>
     In Stock
@@ -158,12 +153,12 @@ The following is based on the [Product example](http://schema.org/Product) on [S
     Add-A-Minute and Child Lock." %>
 
   Customer reviews:
-  <% prop :review do %>
+  <%= prop :review do %>
     <%= prop :name, "Not a happy camper" %> -
     by <%= prop :author, "Ellie" %>,
     <%= prop date_published: "2011-04-01" %>
     April 1, 2011
-    <% prop :review_rating, type: :rating do %>
+    <%= prop :review_rating, type: :rating do %>
       <%= prop worst_rating: 1 %>
       <%= prop :rating_value, 1 %> /
       <%= prop :best_rating, 5 %> stars
