@@ -135,6 +135,12 @@ To define a link to an enumeration member, e.g. [ItemAvailability](http://schema
 <%= prop :availability, :in_stock %>
 ```
 
+You can also do this by passing symbols as hash values:
+
+```erb
+<%= prop availability: :in_stock %>
+```
+
 This will generate the following HTML:
 
 ```html
