@@ -84,4 +84,56 @@ class ViewHelpersTest < ActionView::TestCase
     assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><span itemprop="title">My Title</span></div>},
                  content
   end
+
+  test "prop with trueish if" do
+    content = scope :product do
+      prop :offers, type: :offer, tag: :custom1, class: "offers-container", if: "trueish" do
+        [prop(:price, 123.5, tag: :custom2, class: "price-container"),
+         prop(availability: :in_stock, price_currency: "DKK"),
+         prop(:other_key, :other_value)].join.html_safe
+      end
+    end
+
+    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><custom2 class="price-container" itemprop="price">123.5</custom2><link href="http://schema.org/InStock" itemprop="availability" />\n<meta content="DKK" itemprop="priceCurrency" /><link href="http://schema.org/OtherValue" itemprop="otherKey" /></custom1></div>},
+                 content
+  end
+
+  test "prop with falsey if" do
+    content = scope :product do
+      prop :offers, type: :offer, tag: :custom1, class: "offers-container", if: nil do
+        [prop(:price, 123.5, tag: :custom2, class: "price-container"),
+         prop(availability: :in_stock, price_currency: "DKK"),
+         prop(:other_key, :other_value)].join.html_safe
+      end
+    end
+
+    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container"><custom2 class="price-container">123.5</custom2></custom1></div>},
+                 content
+  end
+
+  test "prop with falsey unless" do
+    content = scope :product do
+      prop :offers, type: :offer, tag: :custom1, class: "offers-container", unless: nil do
+        [prop(:price, 123.5, tag: :custom2, class: "price-container"),
+         prop(availability: :in_stock, price_currency: "DKK"),
+         prop(:other_key, :other_value)].join.html_safe
+      end
+    end
+
+    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><custom2 class="price-container" itemprop="price">123.5</custom2><link href="http://schema.org/InStock" itemprop="availability" />\n<meta content="DKK" itemprop="priceCurrency" /><link href="http://schema.org/OtherValue" itemprop="otherKey" /></custom1></div>},
+                 content
+  end
+
+  test "prop with trueish unless" do
+    content = scope :product do
+      prop :offers, type: :offer, tag: :custom1, class: "offers-container", unless: "trueish" do
+        [prop(:price, 123.5, tag: :custom2, class: "price-container"),
+         prop(availability: :in_stock, price_currency: "DKK"),
+         prop(:other_key, :other_value)].join.html_safe
+      end
+    end
+
+    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container"><custom2 class="price-container">123.5</custom2></custom1></div>},
+                 content
+  end
 end

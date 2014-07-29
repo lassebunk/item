@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.0.6
+
+* Add `:if` and `:unless` options to the `prop` helper do disable rendering of microdata
+
 ### 0.0.5
 
 * Set itemscope attribute explicitly for backwards Rails compatibility

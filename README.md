@@ -112,6 +112,16 @@ This will generate the following HTML:
 </div>
 ```
 
+##### Disabling rendering on scoped properties
+
+Sometimes you need to disable rendering on entire `prop` blocks. You can do this by passing `:if` and `:unless` options.
+This will render the content, but without microdata for both the `prop` block itself and all `prop`s inside it:
+
+```erb
+<%= prop :review_rating, type: :rating, if: @product.rating? do %>
+  ...
+<% end %>
+```
 
 #### Meta properties
 
