@@ -78,7 +78,7 @@ class ViewHelpersTest < ActionView::TestCase
 
   test "combined" do
     content = scope :product do
-      concat prop(:title, "My Title")
+      prop(:title, "My Title")
     end
 
     assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><span itemprop="title">My Title</span></div>},
