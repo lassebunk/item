@@ -198,6 +198,27 @@ The following is based on the [Product example](http://schema.org/Product) on [S
 <% end %>
 ```
 
+## Tools for validating microdata
+
+There are various tools you can use for validating your microdata.
+I recommend using these (especially Google's) before releasing to production, so you are sure that the microdata you implemented works as expected.
+
+#### Google Structured Data Testing Tool
+
+[Google's Structured Data Testing Tool](http://www.google.com/webmasters/tools/richsnippets) is the tool I recommend using for making sure your microdata will validate.
+If your microdata validates here, it will validate on Google SERPs.
+
+You can enter a URL or copy/paste HTML to validate. This means that you can test your development code, too.
+
+#### Bing Markup Validator
+
+[Bing's Markup Validator](http://www.bing.com/webmaster/diagnostics/markup/validator) appears to be easier to read, but it is not as strict as Google's tool.
+
+#### Mida
+
+[Mida](https://github.com/LawrenceWoodman/mida) is a great tool for validating your code locally as you implement new microdata.
+It runs locally via the command line and takes a URL to validate, so you can validate code on your local development server.
+
 ## Contributing
 
 Changes and improvements are to Item are very welcome and greatly appreciated.
