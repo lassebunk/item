@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.0
+
+* First major release
+
 ### 0.0.6
 
 * Add `:if` and `:unless` options to the `prop` helper do disable rendering of microdata
