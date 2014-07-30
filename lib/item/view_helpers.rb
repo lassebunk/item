@@ -23,8 +23,8 @@ module Item
         options, value = value, nil if value.is_a?(Hash)
         itemprop = Util.itemprop(key)
 
-        @_item_enabled_old = @_item_enabled
-        @_item_enabled = @_item_enabled_old && options.fetch(:if, !options.fetch(:unless, false))
+        item_enabled_old = @_item_enabled
+        @_item_enabled = item_enabled_old && options.fetch(:if, !options.fetch(:unless, false))
         
         options.delete(:if)
         options.delete(:unless)
@@ -40,7 +40,7 @@ module Item
           content_tag(tag, value, options)
         end
 
-        @_item_enabled = @_item_enabled_old
+        @_item_enabled = item_enabled_old
 
         content
       end

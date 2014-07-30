@@ -100,14 +100,17 @@ class ViewHelpersTest < ActionView::TestCase
 
   test "prop with falsey if" do
     content = scope :product do
-      prop :offers, type: :offer, tag: :custom1, class: "offers-container", if: nil do
-        [prop(:price, 123.5, tag: :custom2, class: "price-container"),
-         prop(availability: :in_stock, price_currency: "DKK"),
-         prop(:other_key, :other_value)].join.html_safe
-      end
+      "".tap do |content|
+        content << prop(:offers, type: :offer, tag: :custom1, class: "offers-container", if: nil) do
+          [prop(:price, 123.5, tag: :custom2, class: "price-container"),
+           prop(availability: :in_stock, price_currency: "DKK"),
+           prop(:other_key, :other_value)].join.html_safe
+        end
+        content << prop(:name, "Product Name")
+      end.html_safe
     end
 
-    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container"><custom2 class="price-container">123.5</custom2></custom1></div>},
+    assert_equal %{<div itemscope=\"itemscope\" itemtype=\"http://schema.org/Product\"><custom1 class=\"offers-container\"><custom2 class=\"price-container\">123.5</custom2></custom1><span itemprop=\"name\">Product Name</span></div>},
                  content
   end
 
@@ -126,14 +129,17 @@ class ViewHelpersTest < ActionView::TestCase
 
   test "prop with trueish unless" do
     content = scope :product do
-      prop :offers, type: :offer, tag: :custom1, class: "offers-container", unless: "trueish" do
-        [prop(:price, 123.5, tag: :custom2, class: "price-container"),
-         prop(availability: :in_stock, price_currency: "DKK"),
-         prop(:other_key, :other_value)].join.html_safe
-      end
+      "".tap do |content|
+        content << prop(:offers, type: :offer, tag: :custom1, class: "offers-container", if: nil) do
+          [prop(:price, 123.5, tag: :custom2, class: "price-container"),
+           prop(availability: :in_stock, price_currency: "DKK"),
+           prop(:other_key, :other_value)].join.html_safe
+        end
+        content << prop(:name, "Product Name")
+      end.html_safe
     end
 
-    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container"><custom2 class="price-container">123.5</custom2></custom1></div>},
+    assert_equal %{<div itemscope=\"itemscope\" itemtype=\"http://schema.org/Product\"><custom1 class=\"offers-container\"><custom2 class=\"price-container\">123.5</custom2></custom1><span itemprop=\"name\">Product Name</span></div>},
                  content
   end
 end
