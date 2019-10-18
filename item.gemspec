@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "bundler", "~> 1.6"
   s.add_development_dependency "rake"
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "sqlite3", '~> 1.3.13'
 end

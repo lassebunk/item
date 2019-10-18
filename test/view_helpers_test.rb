@@ -8,7 +8,7 @@ class ViewHelpersTest < ActionView::TestCase
       "content"
     end
 
-    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/AggregateRating">content</div>},
+    assert_equal %{<div itemscope="itemscope" itemtype="https://schema.org/AggregateRating">content</div>},
                  content
   end
 
@@ -17,7 +17,7 @@ class ViewHelpersTest < ActionView::TestCase
       "content"
     end
 
-    assert_equal %{<something class="some-class" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">content</something>},
+    assert_equal %{<something class="some-class" itemscope="itemscope" itemtype="https://schema.org/AggregateRating">content</something>},
                  content
   end
 
@@ -38,14 +38,14 @@ class ViewHelpersTest < ActionView::TestCase
   test "hidden prop" do
     content = prop(aggregate_rating: "Rating content", availability: :in_stock)
 
-    assert_equal %{<meta content="Rating content" itemprop="aggregateRating" />\n<link href="http://schema.org/InStock" itemprop="availability" />},
+    assert_equal %{<meta content="Rating content" itemprop="aggregateRating" />\n<link href="https://schema.org/InStock" itemprop="availability" />},
                  content
   end
 
   test "link prop" do
     content = prop(:availability, :in_stock)
 
-    assert_equal %{<link href="http://schema.org/InStock" itemprop="availability" />},
+    assert_equal %{<link href="https://schema.org/InStock" itemprop="availability" />},
                  content
   end
 
@@ -54,7 +54,7 @@ class ViewHelpersTest < ActionView::TestCase
       "content"
     end
 
-    assert_equal %{<div itemprop="aggregateRating" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">content</div>},
+    assert_equal %{<div itemprop="aggregateRating" itemscope="itemscope" itemtype="https://schema.org/AggregateRating">content</div>},
                  content
   end
 
@@ -63,7 +63,7 @@ class ViewHelpersTest < ActionView::TestCase
       "content"
     end
 
-    assert_equal %{<something class="some-class" itemprop="aggregateRating" itemscope="itemscope" itemtype="http://schema.org/AggregateRating">content</something>},
+    assert_equal %{<something class="some-class" itemprop="aggregateRating" itemscope="itemscope" itemtype="https://schema.org/AggregateRating">content</something>},
                  content
   end
 
@@ -72,7 +72,7 @@ class ViewHelpersTest < ActionView::TestCase
       "content"
     end
 
-    assert_equal %{<div itemprop="aggregateRating" itemscope="itemscope" itemtype="http://schema.org/OtherType">content</div>},
+    assert_equal %{<div itemprop="aggregateRating" itemscope="itemscope" itemtype="https://schema.org/OtherType">content</div>},
                  content
   end
 
@@ -81,7 +81,7 @@ class ViewHelpersTest < ActionView::TestCase
       prop(:title, "My Title")
     end
 
-    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><span itemprop="title">My Title</span></div>},
+    assert_equal %{<div itemscope="itemscope" itemtype="https://schema.org/Product"><span itemprop="title">My Title</span></div>},
                  content
   end
 
@@ -94,7 +94,7 @@ class ViewHelpersTest < ActionView::TestCase
       end
     end
 
-    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><custom2 class="price-container" itemprop="price">123.5</custom2><link href="http://schema.org/InStock" itemprop="availability" />\n<meta content="DKK" itemprop="priceCurrency" /><link href="http://schema.org/OtherValue" itemprop="otherKey" /></custom1></div>},
+    assert_equal %{<div itemscope="itemscope" itemtype="https://schema.org/Product"><custom1 class="offers-container" itemprop="offers" itemscope="itemscope" itemtype="https://schema.org/Offer"><custom2 class="price-container" itemprop="price">123.5</custom2><link href="https://schema.org/InStock" itemprop="availability" />\n<meta content="DKK" itemprop="priceCurrency" /><link href="https://schema.org/OtherValue" itemprop="otherKey" /></custom1></div>},
                  content
   end
 
@@ -110,7 +110,7 @@ class ViewHelpersTest < ActionView::TestCase
       end.html_safe
     end
 
-    assert_equal %{<div itemscope=\"itemscope\" itemtype=\"http://schema.org/Product\"><custom1 class=\"offers-container\"><custom2 class=\"price-container\">123.5</custom2></custom1><span itemprop=\"name\">Product Name</span></div>},
+    assert_equal %{<div itemscope=\"itemscope\" itemtype=\"https://schema.org/Product\"><custom1 class=\"offers-container\"><custom2 class=\"price-container\">123.5</custom2></custom1><span itemprop=\"name\">Product Name</span></div>},
                  content
   end
 
@@ -123,7 +123,7 @@ class ViewHelpersTest < ActionView::TestCase
       end
     end
 
-    assert_equal %{<div itemscope="itemscope" itemtype="http://schema.org/Product"><custom1 class="offers-container" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><custom2 class="price-container" itemprop="price">123.5</custom2><link href="http://schema.org/InStock" itemprop="availability" />\n<meta content="DKK" itemprop="priceCurrency" /><link href="http://schema.org/OtherValue" itemprop="otherKey" /></custom1></div>},
+    assert_equal %{<div itemscope="itemscope" itemtype="https://schema.org/Product"><custom1 class="offers-container" itemprop="offers" itemscope="itemscope" itemtype="https://schema.org/Offer"><custom2 class="price-container" itemprop="price">123.5</custom2><link href="https://schema.org/InStock" itemprop="availability" />\n<meta content="DKK" itemprop="priceCurrency" /><link href="https://schema.org/OtherValue" itemprop="otherKey" /></custom1></div>},
                  content
   end
 
@@ -139,7 +139,7 @@ class ViewHelpersTest < ActionView::TestCase
       end.html_safe
     end
 
-    assert_equal %{<div itemscope=\"itemscope\" itemtype=\"http://schema.org/Product\"><custom1 class=\"offers-container\"><custom2 class=\"price-container\">123.5</custom2></custom1><span itemprop=\"name\">Product Name</span></div>},
+    assert_equal %{<div itemscope=\"itemscope\" itemtype=\"https://schema.org/Product\"><custom1 class=\"offers-container\"><custom2 class=\"price-container\">123.5</custom2></custom1><span itemprop=\"name\">Product Name</span></div>},
                  content
   end
 end
