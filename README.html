@@ -120,10 +120,10 @@ body{font-size:16px;}
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
-</style><title>README</title></head><body><p><a href="http://travis-ci.org/lassebunk/item"><img alt="Build Status" src="https://secure.travis-ci.org/lassebunk/item.png" /></a></p>
+</style><title>README</title></head><body><p><a href="https://travis-ci.org/lassebunk/item"><img alt="Build Status" src="https://secure.travis-ci.org/lassebunk/item.png" /></a></p>
 <h1 id="item">Item</h1>
 <p>Item is a Ruby on Rails plugin for implementing semantic markup (microdata) without messing up the view code.</p>
-<p>See <a href="http://schema.org/docs/schemas.html">Schema.org</a> for valid microdata.</p>
+<p>See <a href="https://schema.org/docs/schemas.html">Schema.org</a> for valid microdata.</p>
 <h2 id="installation">Installation</h2>
 <p>Add this line to your application's <em>Gemfile</em>:</p>
 <pre><code class="ruby">gem 'item'
@@ -142,7 +142,7 @@ body{font-size:16px;}
 </code></pre>
 
 <p>This will generate the following HTML:</p>
-<pre><code class="html">&lt;div itemscope itemtype=&quot;http://schema.org/Product&quot;&gt;
+<pre><code class="html">&lt;div itemscope itemtype=&quot;https://schema.org/Product&quot;&gt;
   ...
 &lt;/div&gt;
 </code></pre>
@@ -168,7 +168,7 @@ body{font-size:16px;}
 <h4 id="link-values">Link values</h4>
 <p>To define a link to an enumeration member, e.g. <a href="">ItemAvailability</a></p>
 <h2 id="example">Example</h2>
-<p>The following is the Product <a href="http://schema.org/Product">example</a> on <a href="http://schema.org">Schema.org</a> rewritten with Item. In your view:</p>
+<p>The following is the Product <a href="https://schema.org/Product">example</a> on <a href="https://schema.org">Schema.org</a> rewritten with Item. In your view:</p>
 <pre><code class="erb">&lt;% scope :product do %&gt;
   &lt;%= itemprop :name, &quot;Kenmore White 17\&quot; Microwave&quot; %&gt;
   &lt;%= image_tag &quot;kenmore-microwave-17in.jpg&quot; %&gt;

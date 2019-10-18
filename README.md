@@ -4,7 +4,7 @@
 
 Item is a Ruby on Rails plugin for adding semantic markup (microdata) to your views without cluttering the view code.
 
-**What is Microdata?** [Microdata](http://schema.org) helps search engines show additional information about your content, for example product reviews.
+**What is Microdata?** [Microdata](https://schema.org) helps search engines show additional information about your content, for example product reviews.
 This can help attract visitors to your site:
 
 ![Microdata in SERPs](http://i.imgur.com/bCi0GHF.png)
@@ -43,7 +43,7 @@ To define an `itemscope`:
 The above will generate the following HTML:
 
 ```html
-<div itemscope itemtype="http://schema.org/Product">
+<div itemscope itemtype="https://schema.org/Product">
   ...
 </div>
 ```
@@ -89,7 +89,7 @@ To define a property that is also a scope:
 The above will generate the following HTML:
 
 ```html
-<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+<div itemprop="review" itemscope itemtype="https://schema.org/Review">
   <span itemprop="name">Pete Anderson</span>
 </div>
 ```
@@ -107,7 +107,7 @@ Sometimes you need to define a type on scoped properties when this cannot be inf
 This will generate the following HTML:
 
 ```html
-<div itemprop="reviewRating" itemscope itemtype="http://schema.org/Review">
+<div itemprop="reviewRating" itemscope itemtype="https://schema.org/Review">
   ...
 </div>
 ```
@@ -139,7 +139,7 @@ This will generate the following HTML:
 
 #### Link properties
 
-To define a link to an enumeration member, e.g. [ItemAvailability](http://schema.org/ItemAvailability):
+To define a link to an enumeration member, e.g. [ItemAvailability](https://schema.org/ItemAvailability):
 
 ```erb
 <%= prop :availability, :in_stock %>
@@ -154,12 +154,12 @@ You can also do this by passing symbols as hash values:
 This will generate the following HTML:
 
 ```html
-<link itemprop="availability" href="http://schema.org/InStock" />
+<link itemprop="availability" href="https://schema.org/InStock" />
 ```
 
 ## Example
 
-The following is based on the [Product example](http://schema.org/Product) on [Schema.org](http://schema.org), rewritten with the Item gem. In your view:
+The following is based on the [Product example](https://schema.org/Product) on [Schema.org](https://schema.org), rewritten with the Item gem. In your view:
 
 ```erb
 <% scope :product do %>
@@ -205,14 +205,14 @@ I recommend using these (especially Google's) before releasing to production, so
 
 #### Google Structured Data Testing Tool
 
-[Google's Structured Data Testing Tool](http://www.google.com/webmasters/tools/richsnippets) is the tool I recommend using for making sure your microdata will validate.
+[Google's Structured Data Testing Tool](https://www.google.com/webmasters/tools/richsnippets) is the tool I recommend using for making sure your microdata will validate.
 If your microdata validates here, it will validate on Google SERPs.
 
 You can enter a URL or copy/paste HTML to validate. This means that you can test your development code, too.
 
 #### Bing Markup Validator
 
-[Bing's Markup Validator](http://www.bing.com/webmaster/diagnostics/markup/validator) appears to be easier to read, but it is not as strict as Google's tool.
+[Bing's Markup Validator](https://www.bing.com/webmaster/diagnostics/markup/validator) appears to be easier to read, but it is not as strict as Google's tool.
 
 #### Mida
 

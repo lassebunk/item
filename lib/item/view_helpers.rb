@@ -68,7 +68,7 @@ module Item
 
         def href(name)
           name = name.to_s.gsub(/(^|_)(.)/) { $2.upcase }
-          "http://schema.org/#{name}"
+          "https://schema.org/#{name}"
         end
       end
     end
